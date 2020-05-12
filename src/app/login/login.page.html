@@ -1,0 +1,38 @@
+<!-- Default back button -->
+<ion-header>
+  <ion-toolbar color="evaluation">
+  	<ion-buttons slot="start">
+	    <ion-button  color="dark">
+	      <ion-back-button  defaultHref="home"></ion-back-button>
+	    </ion-button>
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content justify-content-center display-flex flex-direction-column>
+    <ion-grid>
+        <ion-row>
+            <ion-col size-md="6" size-lg="8" offsetLg="2" offsetMd="3">
+                <h1>{{loginNote}}</h1>
+                <br><br>
+                <form>
+                    <ion-list>
+                        <ion-item>
+                            <ion-label position="floating">Phone / Email Address</ion-label>
+                            <ion-input autocomplete="off" type="text" clearInput="true" name="emailphone" [(ngModel)]="postData.emailphone"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="floating">Password</ion-label>
+                            <ion-input autocomplete="off" type="password" name="pwd" [(ngModel)]="postData.pwd"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <span slot="start"><a routerLink="/signup"> Create an account</a></span>
+                            <span slot="end"><a routerLink="/forgetpassword" routerDirection="forward"> Forgotten password?</a></span>
+                        </ion-item>
+                        <ion-button type="submit" size="default" color="success" expand="block" shape="round" (click)="loginAction()">Login</ion-button>
+                    </ion-list>
+                </form>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

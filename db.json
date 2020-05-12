@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "fullname": "Uzoma Lewis",
+      "email": "boblewisu@gmail.com",
+      "phone": "08025423743",
+      "pwd": "12345"
+    },
+    {
+      "fullname": "Bob Lewis",
+      "email": "lewis_uzoma1@outlook.com",
+      "phone": "08148591503",
+      "pwd": "12345",
+      "id": "hHtRCmm"
+    },
+    {
+      "fullname": "n",
+      "email": "n",
+      "phone": "n",
+      "pwd": "n",
+      "id": "zvCEfY_"
+    },
+    {
+      "fullname": "wwww",
+      "email": "boblewisu@gmail.com",
+      "phone": "08025423743",
+      "pwd": "123456",
+      "cpwd": "123456",
+      "acceptTerms": false,
+      "id": "a_hZVtp"
+    }
+  ]
+}

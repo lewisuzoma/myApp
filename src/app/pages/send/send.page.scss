@@ -1,0 +1,34 @@
+ion-content {
+	h4 {
+		text-align: center;
+	}
+
+	.question {
+		font-weight: bold;
+	}
+
+	.It1 {
+		--border-bottom: 0px;
+	}
+
+	.It2 {
+		--border-bottom: 0px;
+	}
+
+	ion-label {
+		font-size: 12px;
+	}
+
+	.catItem {
+		margin-bottom: 10px;
+	}
+
+	.schItem {
+		margin-bottom: 10px;
+	}
+
+	.reportItem {
+		--border-bottom: 0px;
+		margin-bottom: 10px;
+	}
+}

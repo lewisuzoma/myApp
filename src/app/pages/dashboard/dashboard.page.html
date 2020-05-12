@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="evaluation">
+    <ion-title><h2><ion-icon name="speedometer-outline"></ion-icon>&nbsp;&nbsp;Dashboard</h2></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content justify-content-center display-flex flex-direction-column>
+    <ion-grid>
+        <ion-row>
+        	<ion-col size-lg="10" offsetLg="1" size-md="10" offsetMd="1" size-sm="12" padding>
+        		<ion-item>
+				    <ion-input type="text" [(ngModel)]="stock" placeholder="LTCUSD, BTCUSD..."></ion-input>
+				    <ion-button slot="end" expand="full" (click)="getData()" [disabled]="stock == ''">
+				      <ion-icon slot="start" name="search"></ion-icon>
+				      Search
+				    </ion-button>
+				</ion-item>
+				<canvas baseChart 
+				  [datasets]="chartData" 
+				  [labels]="chartLabels" 
+				  [options]="chartOptions" 
+				  [colors]="chartColors"
+				  [legend]="showLegend" 
+				  [chartType]="chartType">
+				  </canvas>
+				 
+				  <!-- <ion-card>
+				    <ion-card-header>
+				      <ion-card-title>Settings</ion-card-title>
+				    </ion-card-header>
+				    <ion-card-content>
+				      <ion-item>
+				        <ion-label>Line chart?</ion-label>
+				        <ion-toggle (ionChange)="typeChanged($event)" checked></ion-toggle>
+				      </ion-item>
+				      <ion-item>
+				        <ion-label>Show legend?</ion-label>
+				        <ion-toggle [(ngModel)]="showLegend"></ion-toggle>
+				      </ion-item>
+				      <ion-item>
+				        <ion-label>Background color</ion-label>
+				        <ion-input type="text" [(ngModel)]="chartColors[0].backgroundColor"></ion-input>
+				      </ion-item>
+				    </ion-card-content>
+				  	</ion-card> -->
+        	</ion-col>
+            <ion-col size-lg="6" size-md="6" size-sm="6" size-xs="12" padding>
+				<h3>Top 10 Rated School</h3>
+		        <ion-card [routerLink]="'./user-details/' + user.id" routerDirection="root" detail="true" class="ion-activated" *ngFor="let user of detailServices.users">
+		        	<ion-img [src]="user.picture"></ion-img>
+				  <ion-card-header>
+				    <ion-card-title tappable>{{ user.name }}</ion-card-title>
+				    <ion-card-subtitle>{{ user.title }}</ion-card-subtitle>
+				  </ion-card-header>
+
+				  <ion-card-content class="ion-text-justify">
+				    {{ user.shortDescription }}
+				  </ion-card-content>
+				</ion-card>
+			</ion-col>
+
+			<ion-col size-lg="6" size-md="6" size-sm="6" size-xs="12" no-padding>
+				<h3>Your previous report</h3>
+			</ion-col>
+		</ion-row>
+	</ion-grid>	 
+</ion-content>

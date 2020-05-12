@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="evaluation">
+    <ion-title><h2><ion-icon name="send-outline"></ion-icon>&nbsp;&nbsp;Send</h2></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content justify-content-center display-flex flex-direction-column>
+    <ion-grid>
+        <ion-row>
+            <ion-col size-lg="6" offsetLg="3" size-md="6" offsetMd="3" size-sm="6" offsetSm="3" size-xs="11" offsetXs="1" no-padding>
+			<h4>Send us a report on M & E platform</h4>
+			<form>
+          	<ion-list>
+          		<ion-item class="catItem">
+          		<ion-radio-group value="cat">
+				    <ion-list-header>
+				      <ion-label class="question">Who is making this report?</ion-label>
+				    </ion-list-header>
+
+				    <ion-item class="It1">
+				      <ion-label>Parent/Guadians</ion-label>
+				      <ion-radio slot="start" value="1"></ion-radio>
+				    </ion-item>
+
+				    <ion-item class="It2">
+				      <ion-label>Student</ion-label>
+				      <ion-radio slot="start" value="2"></ion-radio>
+				    </ion-item>
+			  	</ion-radio-group>
+				</ion-item>
+				
+      			<ion-list-header>
+			      <ion-label class="question">Provide a valid school code</ion-label>
+			    </ion-list-header>
+          		<ion-item class="schItem">
+          			<ion-label position="floating">School Code</ion-label>
+          			<ion-input type="text" required="true"></ion-input>
+          			<ion-input type="text" required="true" value="NAITES" readonly></ion-input>
+          		</ion-item>          	
+
+				<ion-list-header>
+				      <ion-label class="question">Write your report</ion-label>
+				    </ion-list-header>
+          		<ion-item class="reportItem">
+          			<ion-label position="floating">Your Report</ion-label>
+          			<ion-textarea></ion-textarea>
+          		</ion-item>
+								
+          		<ion-button type="submit" size="default" color="success" expand="block" shape="round"><ion-icon name="send-outline"></ion-icon>&nbsp;Send</ion-button>
+
+          	</ion-list>
+          </form>
+			</ion-col>
+		</ion-row>
+	</ion-grid>	 
+</ion-content>

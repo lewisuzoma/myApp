@@ -1,0 +1,23 @@
+<ion-header class="app-header">
+  <ion-toolbar color="evaluation" >
+  	<ion-buttons slot="start">
+	    <ion-button  color="dark">
+	      <!-- <ion-back-button *ngIf="canGoBack" defaultHref="previousUrl"></ion-back-button> -->
+	    </ion-button>
+	</ion-buttons>
+    <ion-title>{{ user?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-card *ngIf="user">
+    	<img [src]="user?.picture" class="info-img"/>
+	  <ion-card-header>
+	    <ion-card-subtitle>{{ user.title }}</ion-card-subtitle>
+	  </ion-card-header>
+
+	  <ion-card-content class="ion-text-justify">
+	    {{ user.description }}
+	  </ion-card-content>
+	</ion-card>
+</ion-content>

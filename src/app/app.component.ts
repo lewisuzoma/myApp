@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -23,5 +24,13 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    if (this.platform.is('android')) {
+       this.platform.backButton.subscribe( () => {
+       console.log('back button pressed');
+      });
+    }
+
   }
+  
 }

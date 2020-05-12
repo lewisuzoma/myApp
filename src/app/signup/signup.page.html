@@ -1,0 +1,186 @@
+<!-- Default back button -->
+<ion-header>
+  <ion-toolbar color="evaluation">
+  	<ion-buttons slot="start">
+	    <ion-button  color="dark">
+	      <ion-back-button  defaultHref="home"></ion-back-button>
+	    </ion-button>
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content justify-content-center display-flex flex-direction-column>
+    <ion-grid>
+        <ion-row>
+            <ion-col size-md="6" size-lg="8" offsetLg="2" offsetMd="3">
+          <h1>{{ signupNote }}</h1>
+
+        <!-- ##########################################
+          Simple snippet on Structural Directive 
+        ############################################-->
+
+          <!-- <h2 *ngIf="Bob">Ionic Developer</h2>
+          <ion-item *ngFor="let name of names">
+            <h6>{{ name }} is awesome!</h6>
+          </ion-item>
+          <ion-item [ngSwitch]="days">
+            <h5 *ngSwitchCase="'Friday'">Today is Friday</h5>
+            <h5 *ngSwitchCase="'Saturday'">Today is Saturday</h5>
+            <h5 *ngSwitchCase="'Sunday'">Today is Sunday</h5>
+          </ion-item> -->
+
+        <!-- ##########################################
+          * Snippet testing for Component and Template Interaction
+          * <h1> Property Binding </h1>
+          * <h1> Event Binding </h1>
+          * <h1> Interpolation </h1>
+          * <h1> Two-way data binding [(ngModel)] => used in form inputs</h1>
+        ############################################-->
+
+          <!-- <button ion-item *ngFor="let user of users">
+            <ion-avatar slot="start">
+              <img [src]="user.picture" />
+            </ion-avatar>
+            <h5 tappable>{{ user.name }}</h5>
+            <h6 slot="end">{{ user.title }}</h6>
+          </button> -->
+
+          <br><br>
+          <form name="form" (ngSubmit)="f.form.valid && signupAction()" #f="ngForm" [mustMatch]="['pwd', 'cpwd']" novalidate>
+          	<ion-list>
+          		<ion-item>
+          			<ion-label position="floating">Fullname</ion-label>
+          			<ion-input id="fullname" type="text" required="true" clearInput="true" name="fullname" [(ngModel)]="postData.fullname" ngModel pattern="[a-zA-Z ]*" minlength="4" maxlength="50" #fullname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && fullname.invalid }"></ion-input>
+                  <ion-text color="danger" *ngIf="fullname.invalid && (fullname.dirty || fullname.touched) && f.submitted" class="alert alert-danger">
+                  <p *ngIf="fullname.errors.required">
+                    Name is required.
+                  </p>
+                  <p *ngIf="fullname.errors.minlength">
+                    Name must be at least 4 characters long.
+                  </p>
+                  <p *ngIf="fullname.errors.maxlength">
+                    Name less than 25 characters long.
+                  </p>
+                  <p *ngIf="fullname.errors.pattern">
+                    Invalid character.
+                  </p>
+                </ion-text>
+          		</ion-item>
+
+          		<ion-item>
+          			<ion-label position="floating">Email</ion-label>
+          			<ion-input id="email" type="email" required="true" clearInput="true" name="email" [(ngModel)]="postData.email" ngModel [email]="true"  #email="ngModel" ngModel pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"></ion-input>
+                <ion-text color="danger" *ngIf="email.invalid && (email.dirty || email.touched) && f.submitted">
+                  <p *ngIf="email.errors.required">
+                    Email is required.
+                  </p>
+                  <p *ngIf="email.errors.email">
+                    Email must be a valid email address.
+                  </p>
+                </ion-text>
+          		</ion-item>
+
+          		<ion-item>
+          			<ion-label position="floating">Phone</ion-label>
+          			<ion-input id="phone" type="numeric" required="true" name="phone" [(ngModel)]="postData.phone" ngModel pattern="^[0-9]*$" maxlength="11" #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"></ion-input>
+                <ion-text color="danger" *ngIf="phone.invalid && (phone.dirty || phone.touched) && f.submitted">
+                  <p *ngIf="phone.errors.required">
+                    Name is required.
+                  </p>
+                  <p *ngIf="phone.errors.maxlength">
+                    
+                  </p>
+                  <p *ngIf="phone.errors.pattern">
+                    Invalid Phone Number.
+                  </p>
+                </ion-text>
+          		</ion-item>
+
+          		<ion-item>
+          			<ion-label position="floating">Password</ion-label>
+          			<ion-input id="pwd" type="password" required="true" name="pwd" [(ngModel)]="postData.pwd" minlength="6" #pwd="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pwd.invalid }"></ion-input>
+                <ion-text color="danger" *ngIf="pwd.invalid && (pwd.dirty || pwd.touched) && f.submitted">
+                  <p *ngIf="pwd.errors.required">
+                    Password is required.
+                  </p>
+                  <p *ngIf="pwd.errors.minlength">
+                    Password must be at least 6 characters
+                  </p>
+                </ion-text>
+          		</ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Confirm Password</ion-label>
+                <ion-input id="cpwd" type="password" required="true" name="cpwd" [(ngModel)]="postData.cpwd" minlength="6" #cpwd="ngModel" [ngClass]="{ 'is-invalid': f.submitted && cpwd.invalid }"></ion-input>
+                <ion-text color="danger" *ngIf="cpwd.invalid && (cpwd.dirty || cpwd.touched) && f.submitted">
+                  <p *ngIf="cpwd.errors.required">
+                    Confirm password is required.
+                  </p>
+                  <p *ngIf="cpwd.errors.mustMatch">
+                    Password mis-match
+                  </p>
+                </ion-text>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Accept Terms & Conditions</ion-label>
+                <ion-checkbox slot="start" name="acceptTerms" id="acceptTerms" [(ngModel)]="postData.acceptTerms" #acceptTerms="ngModel" color="dark" [checked]="unchecked" [ngClass]="{ 'is-invalid': f.submitted && acceptTerms.invalid }" required></ion-checkbox>
+                <ion-text color="danger" *ngIf="acceptTerms.invalid && f.submitted">
+                  <p *ngIf="acceptTerms.errors.invalid">Accept Ts & Cs is required.
+                  </p>
+                </ion-text>
+              </ion-item>
+				
+				<ion-item lines="none">
+					<span>Already have an account? <a routerLink="/login"> Login</a></span>
+				</ion-item>
+          		<ion-button type="submit" size="default" color="success" expand="block" shape="round" >Register</ion-button>
+
+          	</ion-list>
+          </form>
+          <!-- <form [formGroup]="signupform" (ngSubmit)="signupfunc()">
+          		  <ion-input clearInput="true" formControlName="fullname" placeholder="Fullname" required></ion-input>
+          		  	<div class="validation-errors">
+          			  <ng-container *ngFor="let validation of validation_messages.fullname">
+          			    <div class="error-message" *ngIf="signupform.get('fullname').hasError(validation.type) && (signupform.get('fullname').dirty || signupform.get('fullname').touched)">
+          			      {{ validation.message }}
+          			    </div>
+          			  </ng-container>
+          			</div>
+          
+          		  <ion-input inputmode="email" clearInput="true" formControlName="email" placeholder="Email Address"></ion-input>
+          			<div class="validation-errors">
+          			  <ng-container *ngFor="let validation of validation_messages.email">
+          			    <div class="error-message" *ngIf="signupform.get('email').hasError(validation.type) && (signupform.get('email').dirty || signupform.get('email').touched)">
+          			      {{ validation.message }}
+          			    </div>
+          			  </ng-container>
+          			</div>
+          			
+          		 <ion-input clearInput="true" inputmode="numeric" formControlName="phone" placeholder="Phone" required></ion-input>
+          			<div class="validation-errors">
+          			  <ng-container *ngFor="let validation of validation_messages.phone">
+          			    <div class="error-message" *ngIf="signupform.get('phone').hasError(validation.type) && (signupform.get('phone').dirty || signupform.get('phone').touched)">
+          			      {{ validation.message }}
+          			    </div>
+          			  </ng-container>
+          			</div>
+          
+          		  <ion-input formControlName="pwd" inputmode="password" placeholder="Password" required></ion-input>
+          			<div class="validation-errors">
+          			  <ng-container *ngFor="let validation of validation_messages.pwd">
+          			    <div class="error-message" *ngIf="signupform.get('pwd').hasError(validation.type) && (signupform.get('pwd').dirty || signupform.get('pwd').touched)">
+          			      {{ validation.message }}
+          			    </div>
+          			  </ng-container>
+          			</div>
+          		  <ion-input formControlName="cpwd" inputmode="password" placeholder="Re-type Password" required></ion-input>
+          
+                   <ion-button [disabled]="!signupform.valid" type="submit" size="large" color="success" expand="block">Save</ion-button>
+          		 </form> -->
+        </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
