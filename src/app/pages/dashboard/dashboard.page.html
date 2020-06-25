@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="evaluation">
+  <ion-toolbar>
     <ion-title><h2><ion-icon name="speedometer-outline"></ion-icon>&nbsp;&nbsp;Dashboard</h2></ion-title>
   </ion-toolbar>
 </ion-header>
@@ -44,24 +44,105 @@
 				    </ion-card-content>
 				  	</ion-card> -->
         	</ion-col>
-            <ion-col size-lg="6" size-md="6" size-sm="6" size-xs="12" padding>
-				<h3>Top 10 Rated School</h3>
-		        <ion-card [routerLink]="'./user-details/' + user.id" routerDirection="root" detail="true" class="ion-activated" *ngFor="let user of detailServices.users">
-		        	<ion-img [src]="user.picture"></ion-img>
-				  <ion-card-header>
-				    <ion-card-title tappable>{{ user.name }}</ion-card-title>
-				    <ion-card-subtitle>{{ user.title }}</ion-card-subtitle>
-				  </ion-card-header>
-
-				  <ion-card-content class="ion-text-justify">
-				    {{ user.shortDescription }}
-				  </ion-card-content>
-				</ion-card>
+            <ion-col class="container-col" size-lg="6" size-md="6" size-sm="6" size-xs="12" padding>
+				<ion-list *ngFor="let user of userData">
+				  <ion-list-header lines="inset" color="success">
+				    <ion-label color="dark"><ion-icon name="home"></ion-icon> Welcome!</ion-label>
+				  </ion-list-header>
+				  <ion-item lines="none">
+				  	<h6>{{ user.fullname }}</h6>
+				  </ion-item>
+				  <ion-item lines="none">
+				  	<h6>{{ user.email }}</h6>
+				  </ion-item>
+				  <ion-item lines="none">
+				  	<h6>{{ user.phone }}</h6>
+				  </ion-item>
+				  <ion-item lines="none">
+				  	<h6>Last Login</h6>
+				  </ion-item>
+				</ion-list>				
 			</ion-col>
 
-			<ion-col size-lg="6" size-md="6" size-sm="6" size-xs="12" no-padding>
-				<h3>Your previous report</h3>
+			<ion-col class="container-col" size-lg="6" size-md="6" size-sm="6" size-xs="12" padding>
+				<ion-list>
+				  <ion-list-header lines="inset" color="success">
+				    <ion-label color="dark"><fa-icon icon="tasks"></fa-icon> Activity</ion-label>
+				  </ion-list-header>
+				  <ion-item tappable>
+				  	<h6>Date Sch-Code Sch-Name</h6>
+				  </ion-item>
+				  <ion-item tappable>
+				  	<h6>Date Sch-Code Sch-Name</h6>
+				  </ion-item>
+				  <ion-item tappable>
+				  	<h6>Date Sch-Code Sch-Name</h6>
+				  </ion-item>
+				  <ion-item lines="none">
+				  	<a href="" slot="end">View  all </a>
+				  </ion-item>
+				</ion-list>
 			</ion-col>
+			
+			<ion-col class="container-col" size-lg="6" size-md="6" size-sm="6" size-xs="12" padding>
+				<ion-col no-padding>
+					<ion-list>
+						<ion-list-header lines="inset" color="success">
+						 <ion-label color="dark"><ion-icon name="medal"></ion-icon> Top 10 Rated School</ion-label>
+						</ion-list-header>
+						<ion-item>
+							<ion-col>S/N</ion-col>
+							<ion-col>Institute</ion-col>
+							<ion-col><a href=""><fa-icon icon="globe" color="success"></fa-icon></a></ion-col>
+						</ion-item>
+						<ion-item *ngFor="let school of schlData">
+							<ion-col>{{ school.S/No }}</ion-col>
+							<ion-col>{{ school.NAME }}</ion-col>
+							<ion-col><a [href]="school.CODE" [title]="school.CODE"><fa-icon icon="globe" color="success"></fa-icon></a></ion-col>
+						</ion-item>
+					</ion-list>
+				</ion-col>
+			</ion-col>
+			<ion-col class="container-col" size-lg="6" size-md="6" size-sm="6" size-xs="12" padding>
+				<ion-col no-padding>
+					<ion-list>
+						<ion-list-header lines="inset" color="success">
+						 	<ion-label color="dark"><fa-icon icon="newspaper"></fa-icon> News</ion-label>
+						</ion-list-header>
+					</ion-list>
+
+					<!-- <ion-card [routerLink]="'./user-details/' + newsInfo.source.id" detail="true" class="ion-activated" *ngFor="let newsInfo of detailServices.news | slice:0:3">
+					  <ion-img [src]="newsInfo.urlToImage"></ion-img>
+					  <ion-card-header>
+					    <ion-card-title tappable>{{ newsInfo.title }}</ion-card-title>
+					    <ion-card-subtitle>{{ newsInfo.author }} &nbsp;&nbsp;
+					    	<span text="small">{{ newsInfo.publishedAt}}</span>  &nbsp;&nbsp;<span text="small">{{ newsInfo.source.name}}</span></ion-card-subtitle>
+					  </ion-card-header>
+					
+					  <ion-card-content class="ion-text-justify">
+					    {{ newsInfo.description }}
+					  </ion-card-content>
+					  <ion-row>
+									        <ion-col no-padding>
+									          <ion-badge [routerLink]="'./user-details/' + newsInfo.source.id" detail="true" class="ion-activated" item-right>Read More</ion-badge>
+									        </ion-col>
+									      </ion-row>
+					</ion-card> -->
+
+					<!-- <ion-card [routerLink]="'./user-details/' + user.id" routerDirection="root" detail="true" class="ion-activated" *ngFor="let user of detailServices.users">
+								        	<ion-img [src]="user.picture"></ion-img>
+					  <ion-card-header>
+					    <ion-card-title tappable>{{ user.webTitle }}</ion-card-title>
+					    <ion-card-subtitle>{{ user.sectionName }}</ion-card-subtitle>
+					  </ion-card-header>
+					
+					  <ion-card-content class="ion-text-justify">
+					    {{ user.shortDescription }}
+					  </ion-card-content>
+					</ion-card> -->
+				</ion-col>
+			</ion-col>
+
 		</ion-row>
 	</ion-grid>	 
 </ion-content>

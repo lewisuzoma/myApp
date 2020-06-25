@@ -1,6 +1,6 @@
 <!-- Default back button -->
 <ion-header>
-  <ion-toolbar color="evaluation">
+  <ion-toolbar>
   	<ion-buttons slot="start">
 	    <ion-button  color="dark">
 	      <ion-back-button  defaultHref="home"></ion-back-button>
@@ -15,21 +15,31 @@
             <ion-col size-md="6" size-lg="8" offsetLg="2" offsetMd="3">
                 <h1>{{loginNote}}</h1>
                 <br><br>
-                <form>
+                <form enctype="text/html" name="form" (ngSubmit)="f.form.valid && loginAction()" #f="ngForm" novalidate>
                     <ion-list>
                         <ion-item>
                             <ion-label position="floating">Phone / Email Address</ion-label>
-                            <ion-input autocomplete="off" type="text" clearInput="true" name="emailphone" [(ngModel)]="postData.emailphone"></ion-input>
+                            <ion-input autocomplete="off" type="text" clearInput="true" id="email" name="email" [(ngModel)]="postData.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required="true"></ion-input>
+                            <ion-text color="danger" *ngIf="email.invalid && (email.dirty || email.touched) && f.submitted">
+                              <p *ngIf="email.errors.required">
+                                Email/Phone Number is required.
+                              </p>
+                            </ion-text>
                         </ion-item>
                         <ion-item>
                             <ion-label position="floating">Password</ion-label>
-                            <ion-input autocomplete="off" type="password" name="pwd" [(ngModel)]="postData.pwd"></ion-input>
+                            <ion-input autocomplete="off" type="password" id="password" name="password" [(ngModel)]="postData.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required="true"></ion-input>
+                            <ion-text color="danger" *ngIf="password.invalid && (password.dirty || password.touched) && f.submitted">
+                              <p *ngIf="password.errors.required">
+                                Password is required.
+                              </p>
+                            </ion-text>
                         </ion-item>
                         <ion-item>
                             <span slot="start"><a routerLink="/signup"> Create an account</a></span>
                             <span slot="end"><a routerLink="/forgetpassword" routerDirection="forward"> Forgotten password?</a></span>
                         </ion-item>
-                        <ion-button type="submit" size="default" color="success" expand="block" shape="round" (click)="loginAction()">Login</ion-button>
+                        <ion-button type="submit" size="default" color="success" expand="block" shape="round">Login</ion-button>
                     </ion-list>
                 </form>
             </ion-col>

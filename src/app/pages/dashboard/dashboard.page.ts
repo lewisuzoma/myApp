@@ -2,9 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { DetailsService } from './../../services/details.service';
 import { ActivatedRoute } from '@angular/router';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpClient, HttpHeaders, HttpErrorResponse, HttpInterceptor} from '@angular/common/http';
 import { ChartDataSets } from 'chart.js';
 import {Color, Label } from 'ng2-charts';
+
+import { ApiService } from './../../services/api.service';
+import { Observable, throwError, from } from 'rxjs';
+import { retry, catchError, map } from 'rxjs/operators';
+
+import { StorageService } from './../../services/storage.service';
+import { AuthConstants } from './../../config/auth-constant';
+
+/*export class User {
+   id: number;
+   fullname: string;
+   email: string;
+   phone: string;
+   role: string;
+}*/
 
 @Component({
   selector: 'app-dashboard',
@@ -13,8 +28,10 @@ import {Color, Label } from 'ng2-charts';
 })
 export class DashboardPage implements OnInit {
 
+ base_path = 'http://localhost:3000/users';
+  token: any;
 // Data
-  chartData: ChartDataSets[] = [{ data: [], label: 'Crypto price' }];
+  chartData: ChartDataSets[] = [{ data: [], label: 'Chart' }];
   chartLabels: Label[];
  
   // Options
@@ -45,11 +62,19 @@ export class DashboardPage implements OnInit {
   // For search
   stock = '';
  
+ public userData: any = [];
+
+ public schlData: any = [];
+
   constructor(
   	private route: ActivatedRoute, 
   	public detailServices: DetailsService, 
-  	private http: HttpClient
-  	) { }
+  	private http: HttpClient,
+    public apiService: ApiService,
+    public storageService: StorageService
+  	) { 
+
+    }
  
   getData() {
       this.http.get(`https://financialmodelingprep.com/api/v3/historical-price-full/crypto/${this.stock}?from=2020-01-01`).subscribe(res => {
@@ -71,11 +96,36 @@ export class DashboardPage implements OnInit {
     this.chartType = on ? 'line' : 'bar';
   }
 
+getTokenAuth(){
+     return this.storageService.get(AuthConstants.AUTH).then((res) => {
+       this.token = res;
+     });
+  } 
+
 
   ngOnInit() {
-  	//let id = this.route.snapshot.paramMap.get('id');
+    this.getTokenAuth().then(() => {
+      const headers = new HttpHeaders();
+      const header = headers.set('authorization', `Bearer ${this.token}`);
+      this.http
+      .get(this.base_path, {headers: header}).subscribe((res) => {
+        this.userData.push(res);
+      });
+    });
+    //this.userData = this.apiService.getUserData();
+    //console.log(this.userData);
+    //let id = this.route.snapshot.paramMap.get('id');
   	//console.log(this.detailServices.getUsers(id));
+    this.getUserReports().subscribe((res) => {
+      console.log(res);
+       this.schlData.push(res);
+     }); 
   }
-  
+
+   // Get user data
+  getUserReports() {
+     return this.http.get('http://localhost:3000/school-list')
+  }
+
 
 }

@@ -19,7 +19,7 @@ export class AuthService {
   	) { }
 
   login(postData: any): Observable<any> {
-  	return this.httpService.post('login', postData);
+  	return this.httpService.post('/auth/login', postData);
   }
 
   signup(postData: any): Observable<any> {
@@ -28,7 +28,7 @@ export class AuthService {
 
   logout() {
   	this.storageService.removeItem(AuthConstants.AUTH).then(res =>{
-  	this.router.navigate(['/login']);
+  	this.router.navigate(['login']);
   		});
   	}
 

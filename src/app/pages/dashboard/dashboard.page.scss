@@ -1,0 +1,54 @@
+ion-content {
+
+	ion-list-header {
+		font-weight: bold;
+		font-size: 16px;
+	}
+
+	.graph-col {
+		background-color: #A7B2b6;
+	}
+
+	.container-col {
+		border-bottom: 1px solid lighten(#000000, 20%);
+	}
+
+	ion-col {
+		
+		ion-item {
+			color: #424242;
+		}
+
+		.category-concept-card
+		{
+			background-color: lighten(#000000, 20%);
+			border-radius: 15px;
+			box-shadow: none;
+			margin-bottom: 20px;
+
+			.category-title
+			{
+				color: #FFF;
+				font-weight: 600;
+				font-size: 2.2rem;
+				margin: 0px;
+			}
+
+			.category-description
+			{
+				color: #FFF;
+				margin-bottom: 20px;
+			}
+
+			.category-tag
+			{
+				border: 1px solid #FFF;
+				color: #FFF;
+				background: transparent;
+				font-weight: 300;
+				margin-right: 4px;
+				opacity: 0.6;
+			}
+		}
+	}
+}

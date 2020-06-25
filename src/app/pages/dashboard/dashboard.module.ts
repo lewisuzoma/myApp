@@ -8,12 +8,14 @@ import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
 import { ChartsModule } from 'ng2-charts';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    FontAwesomeModule,
     ChartsModule,
     DashboardPageRoutingModule
   ],

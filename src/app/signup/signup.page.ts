@@ -6,10 +6,10 @@ import { RouterModule, Router } from '@angular/router';
 //import { AuthService } from './../services/auth.service';
 //import { StorageService } from './../services/storage.service';
 
-import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators'
+import { Observable, range, throwError } from 'rxjs';
+import { map, filter, finalize, catchError, tap } from 'rxjs/operators';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from './../services/toast.service';
 import { LoaderService } from './../services/loader.service';
 
@@ -33,10 +33,9 @@ public postData = {
 	phone: '',
 	pwd: '',
 	cpwd: '',
-	acceptTerms: false
+	acceptTerms: false //public down: boolean = false;
 	};
 
-//public down: boolean = false;
 
   constructor(public loadingCtrl: LoaderService, 
   	public router: Router,
@@ -67,7 +66,7 @@ public postData = {
   }
 
   ngOnInit() {
-
+	
   }
 
   signupNote = 'Please, Fill the fields below!';
@@ -96,13 +95,11 @@ validateAcceptTerms() {
 signupAction() {
 	this.loadingCtrl.presentLoader("Please wait...");
 	if (this.validateAcceptTerms() === false){
-		console.log(this.validateAcceptTerms());
 		this.toastService.presentToast("Please accept the terms and conditions");
 	}
 	else {
 		if (this.validateInputs()) {
 		this.http.post<any>(`http://localhost:3000/users`,this.postData).subscribe((res: any) => {
-			console.log(res.email);
 			this.toastService.presentToast("Account created!");
 			this.loadingCtrl.dismissLoader();
 			this.router.navigate(['login']);
@@ -126,5 +123,6 @@ signupAction() {
 	this.loadingCtrl.dismissLoader();
 
 	}
+
 
 }

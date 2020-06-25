@@ -14,15 +14,17 @@ import { HttpClientModule } from '@angular/common/http';
 import 'chartjs-plugin-zoom';
 import { ChartsModule } from 'ng2-charts';
 
-//import { MustMatchDirective } from './directive/must-match.directive';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
   declarations: [
   	AppComponent
-    //MustMatchDirective
   ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ChartsModule, FormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FontAwesomeModule, HttpClientModule, ChartsModule, FormsModule],
   providers: [
     StatusBar,
     SplashScreen,
@@ -33,4 +35,10 @@ import { ChartsModule } from 'ng2-charts';
 	AppComponent
   ]
 })
-export class AppModule {}
+export class AppModule {
+
+  constructor(library: FaIconLibrary) { 
+    library.addIconPacks(fas, fab, far);
+  }
+
+}

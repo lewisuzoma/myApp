@@ -8,6 +8,7 @@ import { SignupPageRoutingModule } from './signup-routing.module';
 
 import { SignupPage } from './signup.page';
 import { MustMatchDirective } from './../directive/must-match.directive';
+import { EmailExistDirective } from './../directive/email-exist.directive';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { MustMatchDirective } from './../directive/must-match.directive';
     ComponentsModule,
     SignupPageRoutingModule
   ],
-  declarations: [SignupPage, MustMatchDirective]
+  declarations: [SignupPage, MustMatchDirective, EmailExistDirective]
 })
 export class SignupPageModule {}

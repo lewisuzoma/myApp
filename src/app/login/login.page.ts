@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { RouterModule, Router } from '@angular/router'; 
+
 import { AuthConstants } from './../config/auth-constant';
 import { AuthService } from './../services/auth.service';
 import { StorageService } from './../services/storage.service';
+
 import { ToastService } from './../services/toast.service';
 import { LoaderService } from './../services/loader.service';
 import { map } from 'rxjs/operators';
@@ -16,8 +18,8 @@ import { map } from 'rxjs/operators';
 export class LoginPage implements OnInit {
 
   public postData = {
-  	emailphone: '',
-  	pwd: ''
+  	email: '',
+  	password: ''
   };
 
   constructor(
@@ -25,36 +27,38 @@ export class LoginPage implements OnInit {
   	public router: Router,
   	public authService: AuthService,
   	public storageService: StorageService,
-  	private toastService: ToastService
+  	private toastService: ToastService,
   	) {}
 
   ngOnInit() {
   }
 
   validateInputs() {
-	let emailphone = this.postData.emailphone.trim();
-	let pwd = this.postData.pwd.trim();
+	let email = this.postData.email.trim();
+	let password = this.postData.password.trim();
 	return (
-	this.postData.emailphone &&
-	this.postData.pwd &&
-	emailphone.length > 0 &&
-	pwd.length > 0
+	this.postData.email &&
+	this.postData.password &&
+	email.length > 0 &&
+	password.length > 0
 	);
 }
 
   loginNote = "Please Login";
 
   loginAction(){
+  	//console.log(this.postData); //Return a JS Obj {email: "", password: ""}
+  	//const formData = JSON.stringify(this.postData); //Return a JSON {"email": "", "password": ""}
   	 this.loadingCtrl.presentLoader('Please wait...');
   	if (this.validateInputs()) {
 		this.authService.login(this.postData).subscribe((res: any) => {
-	if (res.userData) {
+	if (res.access_token) {
 		// Storing the User data.
-		this.storageService.store(AuthConstants.AUTH, res.userData);
+		this.storageService.store(AuthConstants.AUTH, res.access_token);
 		this.router.navigate(['welcome']);
 	} 
 		else {
-			this.toastService.presentToast('incorrect password.');
+			this.toastService.presentToast('Incorrect login details.');
 		}
 	},
 		(error: any) => {
@@ -67,6 +71,8 @@ export class LoginPage implements OnInit {
 	else {
 		this.toastService.presentToast('Please enter email/username or password.');
 	}
+
+	this.loadingCtrl.dismissLoader();
   }
 
 

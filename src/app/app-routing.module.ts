@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+import { IndexGuard } from './guards/index.guard';
 
 const routes: Routes = [
   {
     path: 'home',
+    canActivate: [IndexGuard],
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    canActivate: [IndexGuard],
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
@@ -22,11 +24,17 @@ const routes: Routes = [
   },
   {
     path: 'signup',
+    canActivate: [IndexGuard],
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
   {
     path: 'forgetpassword',
+    canActivate: [IndexGuard],
     loadChildren: () => import('./forgetpassword/forgetpassword.module').then( m => m.ForgetpasswordPageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
   
 ];

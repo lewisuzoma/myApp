@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { WelcomePage } from './welcome.page';
+import { HomeGuard } from './../guards/home.guard'
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
   {
     path: '',
     component: WelcomePage,
+    canActivate: [HomeGuard],
     children: [
 	  {
 	    path: 'dashboard',

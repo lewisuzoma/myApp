@@ -1,0 +1,181 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "fullname": "Ophelia Monahan",
+      "email": "kim_beatty@gmail.com",
+      "phone": "876-330-9973",
+      "pwd": "E8PurFk7S25qFcz",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "fullname": "Roderick Daugherty",
+      "email": "anibal80@hotmail.com",
+      "phone": "709.651.4649 x0351",
+      "pwd": "sxobdo2QJU1nmBE",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "fullname": "Jarrod Schulist",
+      "email": "mittie24@yahoo.com",
+      "phone": "989.152.1465",
+      "pwd": "HhiH_FULBOqIBlj",
+      "role": "user"
+    },
+    {
+      "id": 4,
+      "fullname": "Kendall Rice",
+      "email": "jamison_crooks98@yahoo.com",
+      "phone": "(191) 795-3376",
+      "pwd": "w5Z7U3TQJDuHyEV",
+      "role": "user"
+    },
+    {
+      "id": 5,
+      "fullname": "Vinnie Batz",
+      "email": "jannie_ernser6@yahoo.com",
+      "phone": "069.912.5567",
+      "pwd": "yjEQfF20XSb8o6j",
+      "role": "user"
+    },
+    {
+      "id": 6,
+      "fullname": "Kaden Ledner",
+      "email": "juana39@gmail.com",
+      "phone": "(231) 163-3128 x10935",
+      "pwd": "1JjLwckSS_BmR2j",
+      "role": "user"
+    },
+    {
+      "id": 7,
+      "fullname": "Blanca Fritsch",
+      "email": "ova55@hotmail.com",
+      "phone": "300.738.4777",
+      "pwd": "oT3p8IECHuBw2Nh",
+      "role": "user"
+    },
+    {
+      "id": 8,
+      "fullname": "Rae Howell",
+      "email": "jalyn_okuneva11@gmail.com",
+      "phone": "1-774-345-9014",
+      "pwd": "QbFNDWSfmdbyG5O",
+      "role": "user"
+    },
+    {
+      "id": 9,
+      "fullname": "Elsa Harber",
+      "email": "maia.davis@yahoo.com",
+      "phone": "223-705-7724 x5077",
+      "pwd": "LDIliemvg9PQ0zL",
+      "role": "user"
+    },
+    {
+      "id": 10,
+      "fullname": "Thora Little",
+      "email": "naomie87@gmail.com",
+      "phone": "002.340.8848 x213",
+      "pwd": "aCtf7Afp6DZ2lda",
+      "role": "user"
+    },
+    {
+      "id": 11,
+      "fullname": "Garnett Nolan",
+      "email": "tina_batz@hotmail.com",
+      "phone": "1-902-349-5416 x2263",
+      "pwd": "gd0V538VgnACAmL",
+      "role": "user"
+    },
+    {
+      "id": 12,
+      "fullname": "Rashad Koch",
+      "email": "ezequiel_nader@gmail.com",
+      "phone": "1-490-277-9683",
+      "pwd": "PwHGA4z_lbz4_2K",
+      "role": "user"
+    },
+    {
+      "id": 13,
+      "fullname": "Marie Hand",
+      "email": "jeff_fadel@hotmail.com",
+      "phone": "(648) 256-1983 x10897",
+      "pwd": "21i4QxC3zsXZPEc",
+      "role": "user"
+    },
+    {
+      "id": 14,
+      "fullname": "King McDermott",
+      "email": "emerald_anderson23@gmail.com",
+      "phone": "1-299-987-7995",
+      "pwd": "X6PWkhzWaekZkTY",
+      "role": "user"
+    },
+    {
+      "id": 15,
+      "fullname": "Justus Mayer",
+      "email": "christopher47@hotmail.com",
+      "phone": "720.921.9068 x481",
+      "pwd": "QowdJ50x_rVtQCB",
+      "role": "user"
+    },
+    {
+      "id": 16,
+      "fullname": "Misty Spinka",
+      "email": "bernardo_ward@gmail.com",
+      "phone": "(856) 031-4360 x980",
+      "pwd": "Pmxi51ikGYW7_vo",
+      "role": "user"
+    },
+    {
+      "id": 17,
+      "fullname": "Dallas Weber",
+      "email": "ebony93@yahoo.com",
+      "phone": "1-179-703-7634",
+      "pwd": "RhmfXfdp7W5jVnN",
+      "role": "user"
+    },
+    {
+      "id": 18,
+      "fullname": "Glenda Olson",
+      "email": "sterling.moen@gmail.com",
+      "phone": "(911) 483-0192 x52114",
+      "pwd": "RAw9EBtkzFEZLBp",
+      "role": "user"
+    },
+    {
+      "id": 19,
+      "fullname": "Haskell Bogisich",
+      "email": "athena_howe29@gmail.com",
+      "phone": "955-082-9898",
+      "pwd": "l0BTOD7pDjhJDzx",
+      "role": "user"
+    },
+    {
+      "id": 20,
+      "fullname": "Keanu Daugherty",
+      "email": "princess.jast87@gmail.com",
+      "phone": "982-168-3079 x963",
+      "pwd": "RwHa2Bxq0zdtqit",
+      "role": "user"
+    },
+    {
+      "fullname": "Lewis Uzoma",
+      "email": "boblewisu@gmail.com",
+      "phone": "08025423743",
+      "pwd": "123456",
+      "cpwd": "123456",
+      "acceptTerms": true,
+      "id": 21
+    }
+  ],
+  "sendReport": [
+    {
+      "cat": "1",
+      "schlCode": "m",
+      "reportTxt": "m",
+      "id": 1
+    }
+  ]
+}

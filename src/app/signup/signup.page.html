@@ -1,6 +1,6 @@
 <!-- Default back button -->
 <ion-header>
-  <ion-toolbar color="evaluation">
+  <ion-toolbar>
   	<ion-buttons slot="start">
 	    <ion-button  color="dark">
 	      <ion-back-button  defaultHref="home"></ion-back-button>
@@ -70,7 +70,7 @@
 
           		<ion-item>
           			<ion-label position="floating">Email</ion-label>
-          			<ion-input id="email" type="email" required="true" clearInput="true" name="email" [(ngModel)]="postData.email" ngModel [email]="true"  #email="ngModel" ngModel pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"></ion-input>
+          			<ion-input id="email" type="email" required="true" clearInput="true" name="email" [(ngModel)]="postData.email" ngModel [email]="true"  #email="ngModel" ngModel pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" appEmailExist></ion-input>
                 <ion-text color="danger" *ngIf="email.invalid && (email.dirty || email.touched) && f.submitted">
                   <p *ngIf="email.errors.required">
                     Email is required.
@@ -78,21 +78,24 @@
                   <p *ngIf="email.errors.email">
                     Email must be a valid email address.
                   </p>
+                  <p class="text-danger" *ngIf="email.touched && email.errors?.emailNotAvailable">
+                      Email address already exist
+                  </p>
                 </ion-text>
           		</ion-item>
 
           		<ion-item>
           			<ion-label position="floating">Phone</ion-label>
-          			<ion-input id="phone" type="numeric" required="true" name="phone" [(ngModel)]="postData.phone" ngModel pattern="^[0-9]*$" maxlength="11" #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"></ion-input>
+          			<ion-input id="phone" type="numeric" required="true" name="phone" [(ngModel)]="postData.phone" ngModel pattern="^[0-9]*$" minlength="11" #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"></ion-input>
                 <ion-text color="danger" *ngIf="phone.invalid && (phone.dirty || phone.touched) && f.submitted">
                   <p *ngIf="phone.errors.required">
-                    Name is required.
+                    Phone number is required.
                   </p>
-                  <p *ngIf="phone.errors.maxlength">
-                    
+                  <p *ngIf="phone.errors.minlength">
+                    Incorrect phone number
                   </p>
                   <p *ngIf="phone.errors.pattern">
-                    Invalid Phone Number.
+                    Invalid phone number.
                   </p>
                 </ion-text>
           		</ion-item>
