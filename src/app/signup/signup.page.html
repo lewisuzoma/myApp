@@ -128,7 +128,7 @@
 
               <ion-item>
                 <ion-label>Accept Terms & Conditions</ion-label>
-                <ion-checkbox slot="start" name="acceptTerms" id="acceptTerms" [(ngModel)]="postData.acceptTerms" #acceptTerms="ngModel" color="dark" [checked]="unchecked" [ngClass]="{ 'is-invalid': f.submitted && acceptTerms.invalid }" required></ion-checkbox>
+                <ion-checkbox slot="start" name="acceptTerms" id="acceptTerms" [(ngModel)]="postData.acceptTerms" #acceptTerms="ngModel" color="dark" [ngClass]="{ 'is-invalid': f.submitted && acceptTerms.invalid }" required></ion-checkbox>
                 <ion-text color="danger" *ngIf="acceptTerms.invalid && f.submitted">
                   <p *ngIf="acceptTerms.errors.invalid">Accept Ts & Cs is required.
                   </p>

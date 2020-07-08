@@ -32,10 +32,6 @@ const routes: Routes = [
     canActivate: [IndexGuard],
     loadChildren: () => import('./forgetpassword/forgetpassword.module').then( m => m.ForgetpasswordPageModule)
   },
-  {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
-  },
   
 ];
 //Remove the welcome module and place it to login.routing.module

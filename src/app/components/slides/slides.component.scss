@@ -1,13 +1,43 @@
-ion-slide {
-	padding: 164px 24px;
-	display: block;
+ion-slides {
+	height: 100%;
+	--bullet-background-active: grey;
 
-	h2 {
-		font-size: 72px;
-		font-weight: bold;
-	}
+	ion-slide {
+		display: block;	
 
-	p {
-		font-size: 36px;
+		ion-card {
+			height: 100%;
+		}
+
+		ion-card-content {
+			position: absolute;
+		    top: 52%;
+		    width: 100%;
+		}
+
 	}
+	
+}
+
+.sliderOne {
+	background: #fff;
+	
+}
+.sliderTwo {
+	background: #98FB98;
+	
+}
+.sliderThree {
+	background: #98FB98;
+	
+}
+
+.cardOne {
+	--background: #fff;
+}
+.cardTwo {
+	--background: #98FB98;
+}
+.cardThree {
+	--background: #2d29;
 }

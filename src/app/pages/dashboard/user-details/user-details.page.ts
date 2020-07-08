@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserDetailsPage implements OnInit {
 
-private user;
+public user;
 
   constructor(private route: ActivatedRoute, public detailServices: DetailsService) { }
 
