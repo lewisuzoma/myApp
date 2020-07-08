@@ -1,1 +1,1 @@
-web: npm run build && npm json:auth
+web: npm run build && npm run json:auth
