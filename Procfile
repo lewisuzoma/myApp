@@ -1,1 +1,1 @@
-web: ionic serve --port $PORT --nobrowser --nolivereload --noopen && npm start
+web: npm run build && npm start
