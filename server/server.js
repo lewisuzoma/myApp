@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const jsonServer = require('json-server')
 const jwt = require('jsonwebtoken')
 const jsonfile = require('jsonfile')
+const morgan = require('morgan')   
+const cors = require('cors')
 
 const port = 3000
 
@@ -11,12 +13,24 @@ const router = jsonServer.router('./server/data/db.json');
 const userdb = JSON.parse(fs.readFileSync('./server/data/users.json', 'UTF-8'));
 const schooldb = JSON.parse(fs.readFileSync('./server/data/school-list.json', 'UTF-8'));
 
+server.use(morgan('dev')); 
 server.use(bodyParser.urlencoded({extended: true}));
 server.use(bodyParser.json());
 server.use(jsonServer.defaults());
+serer.use(cors());
 
 const SECRET_KEY = '123456789';
 const expiresIn = '1hr';
+
+server.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+server.use(express.static('www'));
+server.set('port', process.env.PORT || 3000);
 
 // Create a token from a payload 
 function createToken(payload){
@@ -194,6 +208,6 @@ server.get('/school-list', (req, res) => {
 
 server.use(router)
 
-server.listen(3000, () => {
-  console.log('Run Auth API Server on port: ' + port)
+server.listen(server.get('port'), () => {
+  console.log('Run Auth API Server on port: ' + server.get('port'))
 })
