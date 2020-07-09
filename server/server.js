@@ -15,7 +15,7 @@ server.use(morgan('dev'));
 server.use(bodyParser.urlencoded({extended: true}));
 server.use(bodyParser.json());
 server.use(jsonServer.defaults());
-serer.use(cors());
+server.use(cors());
 
 const SECRET_KEY = '123456789';
 const expiresIn = '1hr';

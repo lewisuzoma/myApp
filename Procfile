@@ -1,1 +1,1 @@
-web: ng build --prod --aot
+web: npm run build
