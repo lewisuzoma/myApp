@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.thewallscript.com/restful/'
+  apiUrl: 'https://api.easyinfo.com.ng/restful/'
 };
